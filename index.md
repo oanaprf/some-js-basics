@@ -1,37 +1,42 @@
-## Welcome to GitHub Pages
+# A short presentation of some JS basics
 
-You can use the [editor on GitHub](https://github.com/oanaprf/some-js-basics/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Useful array functions
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### `map`
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/oanaprf/some-js-basics/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+  * is generally used for **applying processing** on each item of an array(if needed).
+  * **does not mutate** the array that it's applied to.
+  * **parameters**: 
+     * a callback function that dictates what processing will be done on each array item - this function receives the following parameters:
+       * array item
+       * [optional] item index
+       * [optional] initial array
+     * [optional] thisArg - to be used as `this` inside the callback function
+  * **return value**: new array with the processed items.
+  
+  *Example*
+  
+  ```javascript
+  const numbers = [ 1, 4, 9 ];
+  const squareRoots = numbers.map((number, index) => 
+    console.log(`Calculating square root of item at index ${index}`) || Math.sqrt(number));
+  console.log(`Square roots: ${squareRoots}`);
+  ```
+  
+  *Output* 
+  ```
+  Calculating square root of item at index 0
+  Calculating square root of item at index 1
+  Calculating square root of item at index 2
+  Square roots: 1,2,3
+  ```
+  
+> Notice that cool little trick I did there with the `console.log`?
+> I really prefer one-liners instead of using braces for blocks of code(when possible).
+> 
+> So the thing is that `console.log()` is a *falsy* value(it always returns `false`) and using it with the logical operator OR(|| - which *returns the first truthy
+value* or the last value if no truthy value is found) will result in returning `Math.sqrt(number)`.
+> 
+> Cool, right? I mostly use this trick when debugging and I've gone so far as adding a keyboard shortcut in VSCode for `console.log() ||`.
+  
+  
