@@ -7,29 +7,28 @@
   * is generally used for **applying processing** on each item of an array(if needed).
   * **does not mutate** the array that it's applied to.
   * **parameters**: 
-     * a callback function that dictates what processing will be done on each array item - this function receives the following parameters:
+     * a callback function that gets called for each array item - this function receives the following parameters:
        * array item
-       * [optional] item index
+       * [optional] array item index
        * [optional] initial array
      * [optional] thisArg - to be used as `this` inside the callback function
   * **return value**: new array with the processed items.
   
-  *Example*
+*Example*
+```javascript
+const numbers = [ 1, 4, 9 ];
+const squareRoots = numbers.map((number, index) => 
+  console.log(`Calculating square root of item at index ${index}`) || Math.sqrt(number));
+console.log(`Square roots: ${squareRoots}`);
+```
   
-  ```javascript
-  const numbers = [ 1, 4, 9 ];
-  const squareRoots = numbers.map((number, index) => 
-    console.log(`Calculating square root of item at index ${index}`) || Math.sqrt(number));
-  console.log(`Square roots: ${squareRoots}`);
-  ```
-  
-  *Output* 
-  ```
-  Calculating square root of item at index 0
-  Calculating square root of item at index 1
-  Calculating square root of item at index 2
-  Square roots: 1,2,3
-  ```
+*Output* 
+```
+Calculating square root of item at index 0
+Calculating square root of item at index 1
+Calculating square root of item at index 2
+Square roots: 1,2,3
+```
   
 > Notice that cool little trick I did there with the `console.log`?
 > I really prefer one-liners instead of using braces for blocks of code(when possible).
@@ -37,6 +36,58 @@
 > So the thing is that `console.log()` is a *falsy* value(it always returns `false`) and using it with the logical operator OR(|| - which *returns the first truthy
 value* or the last value if no truthy value is found) will result in returning `Math.sqrt(number)`.
 > 
-> Cool, right? I mostly use this trick when debugging and I've gone so far as adding a keyboard shortcut in VSCode for `console.log() ||`.
+> Cool, right? I mostly use this trick when debugging and I've gone so far as binding it to a keyboard shortcut in VSCode.
+
+
+### `reduce`
+
+  * this one's usually used for **obtaining a single result**(be that an object or simply a mere primitive) by processing the items of an array.
+  * **does not mutate** the array that it's applied to.
+  * **parameters**:
+    * a reducer function that will be applied to each array item and generates a single output - has the following parameters:
+      * result - the result of calling the reducer function on the previous iteration
+      * array item - current item in the array
+      * [optional] array item index
+      * [optional] initial array
+    * [optional] an initial value 
+      * if provided, at the first iteration, *result = initial value* and *current array item = first item in the array*
+      * if not provided, at the first iteration, *result = first item in the array* and *current array item = second item in the array*
+  * **return value**: a single value, based on the reducer function
   
+  > *It can also be used to obtain another array, by giving the initial value as an empty array, but that's a bit pointless, right? I mean, that's what `map` is for!*
   
+*Example*
+```javascript
+const numbers = [ 1, 2, 3 ];
+const sum = numbers.reduce((result, currentValue, index) => result + currentValue, 0);
+console.log(`Sum: ${sum}`);
+```
+  
+*Output* 
+```
+Sum: 6
+```
+
+Let's see a more complex example
+```javascript
+const cars = [
+  { brand: "BMW", color:"white" },
+  { brand:"Audi", color:"red" },
+  { brand:"Tesla", color:"black" },
+  ];
+```
+In this case, we want to gather the brands and the colors of all the items in the cars array.
+```
+const attributes = cars.reduce( (result, current) => 
+  ({ 
+     brands: [...result.brands, current.brand],
+     colors: [...result.colors, current.color]
+  }),
+  { brands: [], colors: [] }
+  );
+```
+So, the `attributes` object will be:
+```
+brands: (3) ["BMW", "Audi", "Tesla"]
+colors: (3) ["white", "red", "black"]
+```
