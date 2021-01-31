@@ -173,7 +173,9 @@ Perfect square: 1
 *Example*
 ```javascript
 const numbers = [ 1, 2, 3, 4 ];
-const someArePerfectSquares = numbers.some((current) => console.log(`Checking if ${current} is a perfect square`) || Number.isInteger(Math.sqrt(current)));
+const someArePerfectSquares = numbers.some((current) => 
+    console.log(`Checking if ${current} is a perfect square`) || Number.isInteger(Math.sqrt(current))
+);
 console.log(`Does the numbers array contain perfect squares? Answer: ${someArePerfectSquares ? 'Yes' : 'No'}`);
 ```
   
@@ -200,7 +202,9 @@ Does the numbers array contain perfect squares? Answer: Yes
 *Example*
 ```javascript
 const numbers = [ 1, 2, 3, 4 ];
-const allArePerfectSquares = numbers.every((current) => console.log(`Checking if ${current} is a perfect square`) || Number.isInteger(Math.sqrt(current)));
+const allArePerfectSquares = numbers.every(
+    (current) => console.log(`Checking if ${current} is a perfect square`) || Number.isInteger(Math.sqrt(current))
+);
 console.log(`Does the numbers array only contain perfect squares? Answer: ${allArePerfectSquares ? 'Yes' : 'No'}`);
 ```
   
