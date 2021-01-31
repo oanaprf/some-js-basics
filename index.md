@@ -148,3 +148,30 @@ console.log(`Perfect square: ${perfectSquare}`);
 Perfect square: 1
 ```
 > Notice that the `numbers` array contains two perfect squares, but `find` will only return the first one, i.e. 1.
+
+
+### `some`
+
+  * used for checking if **at least one** array item satisfies a certain condition(given by the callback).
+  * **does not mutate** the array that it's applied to.
+  * **parameters**:
+    * a callback function that will get called for each array item - has the following parameters:
+      * array item - current item in the array
+      * [optional] array item index
+      * [optional] initial array
+    * [optional] thisArg - to be used as `this` inside the callback function
+  * **return value**: boolean: true, if at least one array item for which the callback returns a truthy value and false otherwise
+  
+*Example*
+```javascript
+const numbers = [ 1, 2, 3, 4 ];
+const numbersContainPerfectSquares = numbers.some((current) => console.log(`Checking if ${current} is a perfect square`) || Number.isInteger(Math.sqrt(current)));
+console.log(`Does the numbers array contain perfect squares? Answer: ${numbersContainPerfectSquares ? 'Yes' : 'No'}`);
+```
+  
+*Output* 
+```
+Checking if 1 is a perfect square
+Does the numbers array contain perfect squares? Answer: Yes
+```
+> Notice how only one console.log gets called? That's because `some` needs to find at least one array item for which the callback returns `true`, so after it finds it, the next iterations are skipped.
