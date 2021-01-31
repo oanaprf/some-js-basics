@@ -71,7 +71,11 @@ Sum: 6
 ```
 
 
-Let's see a more complex example.
+<details>
+  <summary>
+     <em>Click to see a more complex example</em>
+  </summary>
+  
 ```javascript
 const cars = [{ brand: "BMW", color:"white" },
               { brand:"Audi", color:"red" },
@@ -91,29 +95,56 @@ So, the `attributes` object will be:
   colors: (3) ["white", "red", "black"]
 }
 ```
+</details>
 
 
 
-### `filter`
+ ### `filter`
 
-  * exactly like the name suggests, this one is used for filtering an array based on a condition(a callback function)
+   * exactly like the name suggests, this one is used for filtering an array based on a condition(a callback function)
+   * **does not mutate** the array that it's applied to.
+   * **parameters**:
+     * a callback function that will be applied to each array item(needs to return a **truthy value** to include the array item in the final array) - has the following parameters:
+       * array item - current item in the array
+       * [optional] array item index
+       * [optional] initial array
+     * [optional] thisArg - to be used as `this` inside the callback function
+   * **return value**: a new array with the filtered items(the ones for which the callback function returned a truthy value)
+
+ *Example*
+ ```javascript
+ const grades = [ 7, 4, 10, 5 ];
+ const passedGrades = grades.filter((current) => current >= 5);
+ console.log(`Passed grades: ${passedGrades}`);
+ ```
+
+ *Output* 
+ ```
+ Passed grades: 7,10,5
+ ```
+
+
+### `find`
+
+  * used for finding the first occurence of an array item that satisfies a certain condition.
   * **does not mutate** the array that it's applied to.
   * **parameters**:
-    * a callback function that will be applied to each array item(needs to return a **truthy value** to include the array item in the final array) - has the following parameters:
+    * a callback function that will be applied to each array item(needs to return a **truthy value** to return that particular array item and skip the next iterations) - has the following parameters:
       * array item - current item in the array
       * [optional] array item index
       * [optional] initial array
     * [optional] thisArg - to be used as `this` inside the callback function
-  * **return value**: a new array with the filtered items(the ones for which the callback function returned a truthy value)
+  * **return value**: a single value, i.e. the first array item for which the callback returns a truthy value
   
 *Example*
 ```javascript
-const grades = [ 7, 4, 10, 5 ];
-const passedGrades = grades.filter((current) => current >= 5);
-console.log(`Passed grades: ${passedGrades}`);
+const numbers = [ 1, 2, 3, 4 ];
+const perfectSquare = numbers.find((current) => Number.isInteger(Math.sqrt(current)));
+console.log(`Perfect square: ${perfectSquare}`);
 ```
   
 *Output* 
 ```
-Passed grades: 7,10,5
+Perfect square: 1
 ```
+> Notice that the `numbers` array contains two perfect squares, but `find` will only return the first one, i.e. 1.
