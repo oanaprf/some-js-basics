@@ -1,6 +1,7 @@
 ## A short presentation of some JS basics
 
 ### Table of contents
+ * [Truthy/Falsy values](#truthy/falsy-values)
  * [Useful array functions](#useful-array-functions) 
    * [map](#map)
    * [reduce](#reduce)
@@ -8,6 +9,32 @@
    * [find](#find)
    * [some](#some)
    * [every](#every)   
+
+
+First, let's talk a bit about a few tips & tricks I picked up along the way.
+
+### Truthy/Falsy values
+
+In the next topics I am going to refer quite a lot to these two terms, as they come in handy when you are a lazy coder and a one-liners enthusiast(like me!).
+You can totally live without them, but why write more code than needed? But let's get to business!
+
+**Truthy values** are Javascript's way of aknowledging a value's existence, i.e. *a value is **truthy** if JS translates it to `true`*.  
+You get the point, so if JS doesn't translate a certain value to `true`, then it certainly is a **falsy value**.  
+Actually, we'll go the other way around and play the elimination game since JS only translates **7 values** to `false`:
+ * `0`
+ * `''`
+ * `false`
+ * `undefined`
+ * `null`
+ * `NaN`
+ * `0n` which is 0 as a BigInt(bla bla)
+
+**So, all the rest of the values are truthy? Yep!**  
+*Even an empty Object?* Yep! Every object is truthy in JS.  
+*Even an empty Array?* Most certainly! Wanna know why? Because *JS Arrays are just a special type of Objects*.
+
+> Just to recap, numbers(that are not 0), Strings(that are not empty), Objects and Arrays(including the empty ones) **are all truthy values**! And a few examples:
+`1`, `'0'`, `' '`, `'undefined'`, `{}`, `{ uselessAttr: '' }`, `[]`, `[0]` and, of course, the boolean `true` => all truthy
 
 ### Useful array functions
 
