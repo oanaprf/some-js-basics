@@ -1,5 +1,13 @@
 ## A short presentation of some JS basics
 
+### Table of contents
+ * [Useful array functions](#useful-array-functions) 
+   * [map](#map)
+   * [reduce](#reduce)
+   * [filter](#filter)
+   * [find](#find)
+   * [some](#some)
+   * [every](#every)   
 
 ### Useful array functions
 
