@@ -165,8 +165,8 @@ Perfect square: 1
 *Example*
 ```javascript
 const numbers = [ 1, 2, 3, 4 ];
-const numbersContainPerfectSquares = numbers.some((current) => console.log(`Checking if ${current} is a perfect square`) || Number.isInteger(Math.sqrt(current)));
-console.log(`Does the numbers array contain perfect squares? Answer: ${numbersContainPerfectSquares ? 'Yes' : 'No'}`);
+const someArePerfectSquares = numbers.some((current) => console.log(`Checking if ${current} is a perfect square`) || Number.isInteger(Math.sqrt(current)));
+console.log(`Does the numbers array contain perfect squares? Answer: ${someArePerfectSquares ? 'Yes' : 'No'}`);
 ```
   
 *Output* 
@@ -174,4 +174,32 @@ console.log(`Does the numbers array contain perfect squares? Answer: ${numbersCo
 Checking if 1 is a perfect square
 Does the numbers array contain perfect squares? Answer: Yes
 ```
-> Notice how only one console.log gets called? That's because `some` needs to find at least one array item for which the callback returns `true`, so after it finds it, the next iterations are skipped.
+> Notice how only one console.log gets printed? That's because `some` needs to find at least one array item for which the callback returns `true`, so after it finds it, the next iterations are skipped.
+
+
+### `every`
+
+  * similar to `some`, but this one checks if **every** array item satisfies the given condition
+  * **does not mutate** the array that it's applied to.
+  * **parameters**:
+    * a callback function that will get called for each array item - has the following parameters:
+      * array item - current item in the array
+      * [optional] array item index
+      * [optional] initial array
+    * [optional] thisArg - to be used as `this` inside the callback function
+  * **return value**: boolean: true, if for every array item the callback returns a truthy value and false otherwise
+  
+*Example*
+```javascript
+const numbers = [ 1, 2, 3, 4 ];
+const allArePerfectSquares = numbers.every((current) => console.log(`Checking if ${current} is a perfect square`) || Number.isInteger(Math.sqrt(current)));
+console.log(`Does the numbers array only contain perfect squares? Answer: ${allArePerfectSquares ? 'Yes' : 'No'}`);
+```
+  
+*Output* 
+```
+Checking if 1 is a perfect square
+Checking if 2 is a perfect square
+Does the numbers array only contain perfect squares? Answer: No
+```
+> Uh oh! Only two console.log got printed! I wonder why is that? Simple! `every` needs the callback function to return a truthy value for all the array items! So if it finds one that doesn't, it stops and returns false, skipping the next iterations.
