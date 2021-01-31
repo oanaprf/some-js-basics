@@ -1,6 +1,8 @@
-# A short presentation of some JS basics
+## A short presentation of some JS basics
 
-## Useful array functions
+
+### Useful array functions
+
 
 ### `map`
 
@@ -68,26 +70,24 @@ console.log(`Sum: ${sum}`);
 Sum: 6
 ```
 
-Let's see a more complex example
+
+Let's see a more complex example.
 ```javascript
-const cars = [
-  { brand: "BMW", color:"white" },
-  { brand:"Audi", color:"red" },
-  { brand:"Tesla", color:"black" },
-  ];
+const cars = [{ brand: "BMW", color:"white" },
+              { brand:"Audi", color:"red" },
+              { brand:"Tesla", color:"black" }];
+const attributes = cars.reduce(
+    (result, current) => ({ brands: [...result.brands, current.brand],  //reducer function
+                            colors: [...result.colors, current.color] }),
+   
+    { brands: [], colors: [] } // initial value
+);
 ```
 In this case, we want to gather the brands and the colors of all the items in the cars array.
-```
-const attributes = cars.reduce( (result, current) => 
-  ({ 
-     brands: [...result.brands, current.brand],
-     colors: [...result.colors, current.color]
-  }),
-  { brands: [], colors: [] }
-  );
-```
 So, the `attributes` object will be:
 ```
-brands: (3) ["BMW", "Audi", "Tesla"]
-colors: (3) ["white", "red", "black"]
+{ 
+  brands: (3) ["BMW", "Audi", "Tesla"]
+  colors: (3) ["white", "red", "black"]
+}
 ```
