@@ -11,8 +11,6 @@
    * [every](#every)   
 
 
-First, let's talk a bit about a few tips & tricks I picked up along the way.
-
 ### Truthy/Falsy values
 
 In the next topics I am going to refer quite a lot to these two terms, as they come in handy when you are a lazy coder and a one-liners enthusiast(like me!).
@@ -35,6 +33,48 @@ Actually, we'll go the other way around and play the elimination game since JS o
 
 > Just to recap, numbers(that are not 0), Strings(that are not empty), Objects and Arrays(including the empty ones) **are all truthy values**! And a few examples:
 `1`, `'0'`, `' '`, `'undefined'`, `{}`, `{ uselessAttr: '' }`, `[]`, `[0]` and, of course, the boolean `true` => all truthy
+
+
+### Short circuit & ternary operators 
+
+Short circuit operators are logical AND `&&` and logical OR `||`. Aside from their obvious and well-known behavior(they check for all(&&), respective at least one(||) operands to be `true` - or truthy), they also have some "hidden" features:  
+
+`&&` will return the **first falsy** operand, and if it doesn't find it, then it returns the last operand => therefore, you can use it as a shorter if  
+*Example*
+```javascript
+const truthyValue = 'truthy value';
+truthyValue && console.log('truthyValue is a truthy value indeed!');
+```
+*Output*
+```
+truthyValue is a truthy value indeed!
+```  
+
+`||` will return the **first truthy** operand, and, similar to `&&` if it doesn't find it, it will return the last operand => you can use this one as a cool trick while debugging, you'll spot it later in this guide  
+*Example*
+```javascript
+const falsyValue = '';
+falsyValue || console.log('falsyValue is falsy:(');
+```
+*Output*
+```
+falsyValue is falsy:(
+```
+
+**Ternary operator** is the short form of an if. It's really simple, look:  
+
+*Example*
+```javascript
+const truthyValue = 'truthy value';
+const falsyValue = '';
+truthyValue ? console.log('truthyValue is a truthy value!') : console.log('truthyValue is a falsy value!');
+falsyValue ? console.log('falsyValue is a truthy value!') : console.log('falsyValue is a falsy value!');
+```
+*Output*
+```
+truthyValue is a truthy value!
+falsyValue is a falsy value!
+```
 
 ### Useful array functions
 
