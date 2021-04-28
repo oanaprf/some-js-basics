@@ -2,7 +2,9 @@
 
 ### Table of contents
  * [Truthy and Falsy values](#truthy-and-falsy-values)
- * [Short cicuit and ternary operators](#short-circuit-and-ternary-operators)
+ * [Short circuit and Ternary operators](#short-circuit-and-ternary-operators)
+ * [Few ES6 useful features](#few-es6-useful-features)
+   * [Template literals](#template-literals)
  * [Useful array functions](#useful-array-functions) 
    * [map](#map)
    * [reduce](#reduce)
@@ -36,7 +38,7 @@ Actually, we'll go the other way around and play the elimination game since JS o
 `1`, `'0'`, `' '`, `'undefined'`, `{}`, `{ uselessAttr: '' }`, `[]`, `[0]` and, of course, the boolean `true` => all truthy
 
 
-### Short circuit and ternary operators
+### Short circuit and Ternary operators
 
 Short circuit operators are logical AND `&&` and logical OR `||`. Aside from their obvious and well-known behavior(they check for all(&&), respective at least one(||) operands to be `true` - or truthy), they also have some "hidden" features:  
 
@@ -75,6 +77,39 @@ falsyValue ? console.log('falsyValue is a truthy value!') : console.log('falsyVa
 ```
 truthyValue is a truthy value!
 falsyValue is a falsy value!
+```
+
+### Few ES6 useful features
+
+### Template literals
+
+**Template literals** are a brand new(and prettier) way of creating strings which supports the following:
+  * embedding variables and expressions(this is what I mostrly use template literals for)
+  * multi-line strings
+
+So, instead of the old fashioned `+` operator you were using to concatenate strings with variables/expressions and the `\n` escape character you were using to add a new line, now you have a more elegant solution.
+
+Template literals are enclosed by the backtick characters ` `` ` and in order to embedd a certain variable/expression you have to place it inside curly braces `{}` preceded by a `$`.
+So it will be something like this: `${randomVariable}`.
+Everything that is included inside the curly braces will be evaluated at runtime.
+Let's see an example!
+
+*Example*
+```javascript
+const worldString = 'World';
+const plusOperatorString = 'Hello ' + worldString + '!\nI am a multi-line string';
+const templateLiteralsString = `Hello ${worldString}! 
+I am a multi-line string`;
+console.log(plusOperatorString); // should log exactly the same thing
+console.log(templateLiteralsString);
+```
+
+*Output* 
+```
+Hello World!
+I am a multi-line string
+Hello World! 
+I am a multi-line string
 ```
 
 ### Useful array functions
