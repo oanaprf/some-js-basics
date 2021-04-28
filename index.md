@@ -1,8 +1,8 @@
 ## A short presentation of some JS basics
 
 ### Table of contents
- * [Truthy/Falsy values](#truthy-falsy-values)
- * [Short cicuit & ternary operators](#short-circuit---ternary-operators)
+ * [Truthy and Falsy values](#truthy-and-falsy-values)
+ * [Short cicuit and ternary operators](#short-circuit-and-ternary-operators)
  * [Useful array functions](#useful-array-functions) 
    * [map](#map)
    * [reduce](#reduce)
@@ -12,7 +12,7 @@
    * [every](#every)   
 
 
-### Truthy/Falsy values
+### Truthy and Falsy values
 
 In the next topics I am going to refer quite a lot to these two terms, as they come in handy when you are a lazy coder and a one-liners enthusiast(like me!).
 You can totally live without them, but why write more code than needed? But let's get to business!
@@ -36,7 +36,7 @@ Actually, we'll go the other way around and play the elimination game since JS o
 `1`, `'0'`, `' '`, `'undefined'`, `{}`, `{ uselessAttr: '' }`, `[]`, `[0]` and, of course, the boolean `true` => all truthy
 
 
-### Short circuit & ternary operators
+### Short circuit and ternary operators
 
 Short circuit operators are logical AND `&&` and logical OR `||`. Aside from their obvious and well-known behavior(they check for all(&&), respective at least one(||) operands to be `true` - or truthy), they also have some "hidden" features:  
 
