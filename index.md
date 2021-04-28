@@ -1,8 +1,8 @@
 ## A short presentation of some JS basics
 
 ### Table of contents
- * [Truthy/Falsy values](#truthy/falsy-values)
- * [Short cicuit & ternary operators](#short-circuit-&-ternary-operators)
+ * [Truthy/Falsy values](#truthy-falsy-values)
+ * [Short cicuit & ternary operators](#short-circuit---ternary-operators)
  * [Useful array functions](#useful-array-functions) 
    * [map](#map)
    * [reduce](#reduce)
