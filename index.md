@@ -36,7 +36,7 @@ Actually, we'll go the other way around and play the elimination game since JS o
 `1`, `'0'`, `' '`, `'undefined'`, `{}`, `{ uselessAttr: '' }`, `[]`, `[0]` and, of course, the boolean `true` => all truthy
 
 
-### Short circuit & ternary operators 
+### Short circuit & ternary operators
 
 Short circuit operators are logical AND `&&` and logical OR `||`. Aside from their obvious and well-known behavior(they check for all(&&), respective at least one(||) operands to be `true` - or truthy), they also have some "hidden" features:  
 
