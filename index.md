@@ -123,11 +123,11 @@ I would say that *object destructuring* is more common than *array destructuring
 
 ### Object destructuring
 
-Object destructuring gives you the posibility to extract only some properties of an object and assign them to certain variables. You can also extract all the object properties, don't get me wrong, but if an object has quite a lot of properties, that would be a headache. Let's see a simple example!
+Object destructuring gives you the posibility to extract only some *properties* of an object and assign them to certain variables. You can also extract all the object properties, don't get me wrong, but if an object has quite a lot of properties, that would be a headache. Let's see a simple example!
 
 *Example*
 ```javascript
-const car = { color: 'red', brand: 'BMW' };
+const car = { color: 'red', brand: 'BMW', model: 'X1' };
 const { color, brand } =  car; // extracting properties 'red' and 'brand' from the 'car' object
 console.log(`This is a ${color} ${brand}`);
 ```
@@ -135,25 +135,46 @@ console.log(`This is a ${color} ${brand}`);
 ```
 This is a red BMW
 ```
+>Notice we didn't need the `model` property, so we didn't mention it.
 
 This is pretty useful when declaring function parameters, as you can precisely name the exact properties of an object you need inside the function's body.
 Let's see another example!
 
 *Example*
 ```javascript
-const car = { color: 'red', brand: 'BMW' };
-const printCar = ({ color, brand }) => console.log(`This is a ${color} ${brand}`);
+const car = { color: 'red', brand: 'BMW', model: 'X1', year: '2020' };
+const printCar = ({ color, brand, ...rest }) => console.log(`This is a ${color} ${brand}. It's an ${rest.model} release in ${rest.year}`);
 printCar(car);
 ```
 *Output*
 ```
-This is a red BMW
+This is a red BMW. It's an X1 released in 2020
 ```
->In this example, the function knows to extract 'color' and 'brand' properties from the object it receives as the parameter. But Javascript's freedom(loosely typed) is a two way street, so since it only expects an object as a parameter, it will give you an error if you pass `null` or `undefined` in. A trick for this would be another ES6 feature, the **default values**, about which I will talk in a bit.
+>In this example, the function knows to extract 'color' and 'brand' properties from the object it receives as the parameter. But Javascript's freedom(*loosely typed*) is a two way street, so since it only expects an object as a parameter, it will give you an error if you pass `null` or `undefined` in. A trick for this would be another ES6 feature, the **default values**, about which I will talk in a bit.
+
+>The three-dotted thing you see there is called the **rest parameter**(I will talk about this also) and it gathers all the remaining(not named in the extraction) properties under an object(named any way you want). You can acces those properties via this object, in this case, `rest.propertyName`.
 
 It's also worth mentioning that if a certain extracted property does not exist on that object, the variable would be, you guessed it, `undefined`.
 
 ### Array destructuring
+
+Array destructuring works in the same way as the object destructuring, except that, instead of properties, you extract *items* from the array. Example comming up!
+```javascript
+const fruits = [ 'bananas', 'apples', 'cherries', 'kiwis', 'peaches' ];
+const [ bananas, apples, , kiwis ] = fruits;
+console.log(`I gotta buy some ${bananas}, ${apples} and ${kiwis}`);
+```
+*Output*
+```
+I gotta buy some bananas, apples and kiwis
+```
+>An obvious difference from the object destructuring is that you can name your extracted variables any way you want, as opposed to the other case, when you need to use the properties' names.
+>Another difference would be that in this case, the order of the extracted variables matters, so the first extracted variable corresponds to the first item in the array and so on.
+>A similarity we can observe is that we can extract only the desired items in the array, so, for example, we didn't need the third item in the array(cherries) so we skipped it, but still took into consideration its position(hence the nearby double commas). We also didn't need the last item in the array(peaches), but because it was the last one, we didn't have to mark it at all.
+
+Another cool trick we can do with the array destructuring is extract only some of the first items and collect the rest by making use of the **rest parameter**. Let's see a quick example!
+
+
 
 
 ### Useful array functions
