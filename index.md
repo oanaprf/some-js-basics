@@ -5,6 +5,10 @@
  * [Short circuit and Ternary operators](#short-circuit-and-ternary-operators)
  * [Few ES6 useful features](#few-es6-useful-features)
    * [Template literals](#template-literals)
+   * [Destructuring assignment](#destructuring-assignment)
+     * [Object destructuring](#object-destructuring)
+     * [Array destructuring](#array-destructuring)
+   * [Spread operator](#spread-operator)
  * [Useful array functions](#useful-array-functions) 
    * [map](#map)
    * [reduce](#reduce)
@@ -111,6 +115,46 @@ I am a multi-line string
 Hello World! 
 I am a multi-line string
 ```
+
+### Destructuring assignment
+
+Another cool feature from ES6 is the **destructuring assignment**, which basically lets you extract specific parts of an object/array into variables.
+I would say that *object destructuring* is more common than *array destructuring*, so let's start with that.
+
+### Object destructuring
+
+Object destructuring gives you the posibility to extract only some properties of an object and assign them to certain variables. You can also extract all the object properties, don't get me wrong, but if an object has quite a lot of properties, that would be a headache. Let's see a simple example!
+
+*Example*
+```javascript
+const car = { color: 'red', brand: 'BMW' };
+const { color, brand } =  car; // extracting properties 'red' and 'brand' from the 'car' object
+console.log(`This is a ${color} ${brand}`);
+```
+*Output*
+```
+This is a red BMW
+```
+
+This is pretty useful when declaring function parameters, as you can precisely name the exact properties of an object you need inside the function's body.
+Let's see another example!
+
+*Example*
+```javascript
+const car = { color: 'red', brand: 'BMW' };
+const printCar = ({ color, brand }) => console.log(`This is a ${color} ${brand}`);
+printCar(car);
+```
+*Output*
+```
+This is a red BMW
+```
+>In this example, the function knows to extract 'color' and 'brand' properties from the object it receives as the parameter. But Javascript's freedom(loosely typed) is a two way street, so since it only expects an object as a parameter, it will give you an error if you pass `null` or `undefined` in. A trick for this would be another ES6 feature, the **default values**, about which I will talk in a bit.
+
+It's also worth mentioning that if a certain extracted property does not exist on that object, the variable would be, you guessed it, `undefined`.
+
+### Array destructuring
+
 
 ### Useful array functions
 
