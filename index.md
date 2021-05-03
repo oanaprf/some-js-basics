@@ -172,7 +172,9 @@ console.log(`I gotta buy some ${bananas}, ${apples} and ${kiwis}`);
 I gotta buy some bananas, apples and kiwis
 ```
 >An obvious difference from the object destructuring is that you can name your extracted variables any way you want, as opposed to the other case, when you need to use the properties' names.
+
 >Another difference would be that in this case, the order of the extracted variables matters, so the first extracted variable corresponds to the first item in the array and so on.
+
 >A similarity we can observe is that we can extract only the desired items in the array, so, for example, we didn't need the third item in the array(cherries) so we skipped it, but still took into consideration its position(hence the nearby double commas). We also didn't need the last item in the array(peaches), but because it was the last one, we didn't have to mark it at all.
 
 Another cool trick we can do with the array destructuring is extract only some of the first items and collect the rest by making use of the **rest parameter**, similar to what we did with object destructuring, but not quite. Let's see a quick example!
