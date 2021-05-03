@@ -152,13 +152,15 @@ This is a red BMW. It's an X1 released in 2020
 ```
 >In this example, the function knows to extract 'color' and 'brand' properties from the object it receives as the parameter. But Javascript's freedom(*loosely typed*) is a two way street, so since it only expects an object as a parameter, it will give you an error if you pass `null` or `undefined` in. A trick for this would be another ES6 feature, the **default values**, about which I will talk in a bit.
 
->The three-dotted thing you see there is called the **rest parameter**(I will talk about this also) and it gathers all the remaining(not named in the extraction) properties under an object(named any way you want). You can acces those properties via this object, in this case, `rest.propertyName`.
+>The three-dotted thing you see there is called the **rest parameter**(I will talk about this also) and it gathers all the remaining(not named in the extraction) properties under an object(named any way you want). You can access those properties via this object, in this case, `rest.propertyName`.
 
 It's also worth mentioning that if a certain extracted property does not exist on that object, the variable would be, you guessed it, `undefined`.
 
 ### Array destructuring
 
 Array destructuring works in the same way as the object destructuring, except that, instead of properties, you extract *items* from the array. Example comming up!
+
+*Example*
 ```javascript
 const fruits = [ 'bananas', 'apples', 'cherries', 'kiwis', 'peaches' ];
 const [ bananas, apples, , kiwis ] = fruits;
@@ -172,9 +174,21 @@ I gotta buy some bananas, apples and kiwis
 >Another difference would be that in this case, the order of the extracted variables matters, so the first extracted variable corresponds to the first item in the array and so on.
 >A similarity we can observe is that we can extract only the desired items in the array, so, for example, we didn't need the third item in the array(cherries) so we skipped it, but still took into consideration its position(hence the nearby double commas). We also didn't need the last item in the array(peaches), but because it was the last one, we didn't have to mark it at all.
 
-Another cool trick we can do with the array destructuring is extract only some of the first items and collect the rest by making use of the **rest parameter**. Let's see a quick example!
+Another cool trick we can do with the array destructuring is extract only some of the first items and collect the rest by making use of the **rest parameter**, similar to what we did with object destructuring, but not quite. Let's see a quick example!
 
+*Example*
+```javascript
+const fruits = [ 'bananas', 'apples', 'cherries', 'kiwis', 'peaches' ];
+const [ bananas, apples, ...rest ] = fruits;
+console.log(`I gotta buy some ${bananas}, ${apples}, but I don't need any ${rest.join(',')}`);
+```
+*Output*
+```
+I gotta buy some bananas, apples, but I don't need any cherries,kiwis,peaches
+```
+>So we only extracted bananas and apples, and we collected the rest of the array items under the `rest` array - YES! - in this case, `rest` is an array.
 
+>`rest.join(',')` creates a string with the array elements concatenated by a comma
 
 
 ### Useful array functions
