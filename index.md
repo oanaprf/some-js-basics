@@ -8,6 +8,7 @@
    * [Destructuring assignment](#destructuring-assignment)
      * [Object destructuring](#object-destructuring)
      * [Array destructuring](#array-destructuring)
+   * [Rest parameter](#rest-parameter)
    * [Spread operator](#spread-operator)
  * [Useful array functions](#useful-array-functions) 
    * [map](#map)
@@ -152,7 +153,7 @@ This is a red BMW. It's an X1 released in 2020
 ```
 >In this example, the function knows to extract 'color' and 'brand' properties from the object it receives as the parameter. But Javascript's freedom(*loosely typed*) is a two way street, so since it only expects an object as a parameter, it will give you an error if you pass `null` or `undefined` in. A trick for this would be another ES6 feature, the **default values**, about which I will talk in a bit.
 
->The three-dotted thing you see there is called the **rest parameter**(I will talk about this also) and it gathers all the remaining(not named in the extraction) properties under an object(named any way you want). You can access those properties via this object, in this case, `rest.propertyName`.
+>The three-dotted thing you see there is called the **rest parameter**(I will talk about this also) and it gathers all the remaining(not named in the extraction) properties under an object(named any way you want). You can access those properties via this object, in this case, `rest.propertyName`. *Rest parameter* must be the **last element**!
 
 It's also worth mentioning that if a certain extracted property does not exist on that object, the variable would be, you guessed it, `undefined`.
 
@@ -186,9 +187,34 @@ console.log(`I gotta buy some ${bananas}, ${apples}, but I don't need any ${rest
 ```
 I gotta buy some bananas, apples, but I don't need any cherries,kiwis,peaches
 ```
->So we only extracted bananas and apples, and we collected the rest of the array items under the `rest` array - YES! - in this case, `rest` is an array.
+>So we only extracted bananas and apples, and we collected the rest of the array items under the `rest` array - YES! - in this case, `rest` is an array. *Rest parameter* must be the **last element** in the array!
 
 >`rest.join(',')` creates a string with the array elements concatenated by a comma
+
+### Rest parameter
+
+As promised, here is a short overview of the **rest parameter**, another ES6 feature. This one was introduced more for allowing an indefinite number of parameters for functions, but, as you've seen, it can be very useful in some other cases as well.
+It's syntax is simple: three dots followed by a variable name(any name you want).
+
+*Example*
+```javascript
+const printFruits = (...args) => console.log(`I gotta buy some ${args.join(',')}`);
+printFruits('bananas', 'apples', 'cherries', 'kiwis', 'peaches');
+```
+*Output*
+```
+I gotta buy some bananas,apples,cherries,kiwis,peaches
+```
+
+*Example*
+```javascript
+const printFruits = (bananas, apples, ...args) => console.log(`I gotta buy some ${bananas}, ${apples}, but I don't need any ${args.join(',')}`);
+printFruits('bananas', 'apples', 'cherries', 'kiwis', 'peaches');
+```
+*Output*
+```
+I gotta buy some bananas, apples, but I don't need any cherries,kiwis,peaches
+```
 
 
 ### Useful array functions
