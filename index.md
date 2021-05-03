@@ -221,6 +221,11 @@ printFruits('bananas', 'apples', 'cherries', 'kiwis', 'peaches');
 ```
 I gotta buy some bananas, apples, but I don't need any cherries,kiwis,peaches
 ```
+>But remember, any named parameters must come before the rest parameter!
+
+### Spread operator
+
+
 
 
 ## Useful array functions
