@@ -1,6 +1,6 @@
-## A short presentation of some JS basics
+# A short presentation of some JS basics
 
-### Table of contents
+## Table of contents
  * [Truthy and Falsy values](#truthy-and-falsy-values)
  * [Short circuit and Ternary operators](#short-circuit-and-ternary-operators)
  * [Few ES6 useful features](#few-es6-useful-features)
@@ -19,7 +19,7 @@
    * [every](#every)   
 
 
-### Truthy and Falsy values
+## Truthy and Falsy values
 
 In the next topics I am going to refer quite a lot to these two terms, as they come in handy when you are a lazy coder and a one-liners enthusiast(like me!).
 You can totally live without them, but why write more code than needed? But let's get to business!
@@ -43,7 +43,7 @@ Actually, we'll go the other way around and play the elimination game since JS o
 `1`, `'0'`, `' '`, `'undefined'`, `{}`, `{ uselessAttr: '' }`, `[]`, `[0]` and, of course, the boolean `true` => all truthy
 
 
-### Short circuit and Ternary operators
+## Short circuit and Ternary operators
 
 Short circuit operators are logical AND `&&` and logical OR `||`. Aside from their obvious and well-known behavior(they check for all(&&), respective at least one(||) operands to be `true` - or truthy), they also have some "hidden" features:  
 
@@ -84,7 +84,7 @@ truthyValue is a truthy value!
 falsyValue is a falsy value!
 ```
 
-### Few ES6 useful features
+## Few ES6 useful features
 
 ### Template literals
 
@@ -122,7 +122,7 @@ I am a multi-line string
 Another cool feature from ES6 is the **destructuring assignment**, which basically lets you extract specific parts of an object/array into variables.
 I would say that *object destructuring* is more common than *array destructuring*, so let's start with that.
 
-### Object destructuring
+#### Object destructuring
 
 Object destructuring gives you the posibility to extract only some *properties* of an object and assign them to certain variables. You can also extract all the object properties, don't get me wrong, but if an object has quite a lot of properties, that would be a headache. Let's see a simple example!
 
@@ -157,7 +157,7 @@ This is a red BMW. It's an X1 released in 2020
 
 It's also worth mentioning that if a certain extracted property does not exist on that object, the variable would be, you guessed it, `undefined`.
 
-### Array destructuring
+#### Array destructuring
 
 Array destructuring works in the same way as the object destructuring, except that, instead of properties, you extract *items* from the array. Example comming up!
 
@@ -205,10 +205,14 @@ printFruits('bananas', 'apples', 'cherries', 'kiwis', 'peaches');
 ```
 I gotta buy some bananas,apples,cherries,kiwis,peaches
 ```
+>`args` variable is an array consisting of every argument you pass to the `printFruits` function, in this case its value will be `['bananas', 'apples', 'cherries', 'kiwis', 'peaches']`
+
+You can also name some of the first arguments passed to the function, like in the following example.
 
 *Example*
 ```javascript
-const printFruits = (bananas, apples, ...args) => console.log(`I gotta buy some ${bananas}, ${apples}, but I don't need any ${args.join(',')}`);
+const printFruits = (bananas, apples, ...args) => 
+  console.log(`I gotta buy some ${bananas}, ${apples}, but I don't need any ${args.join(',')}`);
 printFruits('bananas', 'apples', 'cherries', 'kiwis', 'peaches');
 ```
 *Output*
@@ -217,7 +221,7 @@ I gotta buy some bananas, apples, but I don't need any cherries,kiwis,peaches
 ```
 
 
-### Useful array functions
+## Useful array functions
 
 
 ### `map`
