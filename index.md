@@ -144,7 +144,8 @@ Let's see another example!
 *Example*
 ```javascript
 const car = { color: 'red', brand: 'BMW', model: 'X1', year: '2020' };
-const printCar = ({ color, brand, ...rest }) => console.log(`This is a ${color} ${brand}. It's an ${rest.model} release in ${rest.year}`);
+const printCar = ({ color, brand, ...rest }) => console.log(`This is a ${color} ${brand}. 
+It's an ${rest.model} release in ${rest.year}`);
 printCar(car);
 ```
 *Output*
@@ -153,7 +154,7 @@ This is a red BMW. It's an X1 released in 2020
 ```
 >In this example, the function knows to extract 'color' and 'brand' properties from the object it receives as the parameter. But Javascript's freedom(*loosely typed*) is a two way street, so since it only expects an object as a parameter, it will give you an error if you pass `null` or `undefined` in. A trick for this would be another ES6 feature, the **default values**, about which I will talk in a bit.
 
->The three-dotted thing you see there is called the **rest parameter**(I will talk about this also) and it gathers all the remaining(not named in the extraction) properties under an object(named any way you want). You can access those properties via this object, in this case, `rest.propertyName`. *Rest parameter* must be the **last element**!
+>The three-dotted thing you see there is called the **rest parameter(or operator)**(I will talk about this also) and it gathers all the remaining(not named in the extraction) properties under an object(named any way you want). You can access those properties via this object, in this case, `rest.propertyName`. *Rest parameter* must be the **last element**!
 
 It's also worth mentioning that if a certain extracted property does not exist on that object, the variable would be, you guessed it, `undefined`.
 
@@ -196,7 +197,8 @@ I gotta buy some bananas, apples, but I don't need any cherries,kiwis,peaches
 ### Rest parameter
 
 As promised, here is a short overview of the **rest parameter**, another ES6 feature. This one was introduced more for allowing an indefinite number of parameters for functions, but, as you've seen, it can be very useful in some other cases as well.
-It's syntax is simple: three dots followed by a variable name(any name you want).
+
+Its syntax is simple: three dots followed by a variable name(any name you want).
 
 *Example*
 ```javascript
@@ -223,10 +225,42 @@ I gotta buy some bananas, apples, but I don't need any cherries,kiwis,peaches
 ```
 >But remember, any named parameters must come before the rest parameter!
 
+In this case, we used the *rest operator* without any destructuring, but, as I've shown you in the *destructuring* examples, you can totally combine them!
+
 ### Spread operator
 
+If **rest** operator joins certain values under a single one, guess what **spread** operator does! Yep, exactly the opposite: it *spreads* the values.
+
+The synthax is the same(three dots and a variable name), so it may be get a little confusing at first, but don't worry, you'll get the hang of it!
+
+**Spread operator** is generally used for *concating arrays* and *merging object properties*. Let's see an example of each.
+
+*Example*
+```javascript
+const summerFruits = ['watermelon', 'mango', 'papaya'];
+const autumnFruits = ['apples', 'pears', 'grapes'];
+const fruits = [...summerFruits, ...autumnFruits];
+console.log(fruits);
+```
+*Output*
+```
+["watermelon", "mango", "papaya", "apples", "pears", "grapes"]
+```
+> In this example we created a new array, `fruits`, by spreading `summerFruits` and `autumnFruits`. Both initial arrays remain unchanged.
 
 
+*Example*
+```javascript
+const frontendDev = {javascript: true, html: true, css: true};
+const backendDev = {java: true, mySQL: true, oracle: true};
+const fullstackDev = {...frontendDev, ...backendDev};
+console.log(fullstackDev);
+```
+*Output*
+```
+{javascript: true, html: true, css: true, java: true, mySQL: true, oracle:true}
+```
+> `fullstackDev` object will have all the properties that both `frontendDev` and `backendDev` have. Keep in mind that if they would have different values for a certain property, then the value which will be picked up will be the one from the object that is last spread!
 
 ## Useful array functions
 
