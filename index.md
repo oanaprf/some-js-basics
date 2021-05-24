@@ -10,6 +10,7 @@
      * [Array destructuring](#array-destructuring)
    * [Rest parameter](#rest-parameter)
    * [Spread operator](#spread-operator)
+   * [Default parameters](#default-parameters)
  * [Useful array functions](#useful-array-functions) 
    * [map](#map)
    * [reduce](#reduce)
@@ -261,6 +262,31 @@ console.log(fullstackDev);
 {javascript: true, html: true, css: true, java: true, mySQL: true, oracle:true}
 ```
 > `fullstackDev` object will have all the properties that both `frontendDev` and `backendDev` have. Keep in mind that if they would have different values for a certain property, then the value which will be picked up will be the one from the object that is last spread!
+
+
+### Default parameters
+
+When we talk about **default parameters**, we need some kind of context: *functions*. Default parameters act as a safety net for calling methods on a function's arguments that may come undefined. In other words, they save you from the classical *TypeError: Cannot read property 'x' of undefined*.
+
+So, if a parameter's value is undefined, it will automatically take the default value you assigned in the function's signature.
+Let's see a quick example.
+
+*Example*
+```javascript
+const printFruits = fruits => fruits.forEach(fruit => console.log(fruit));
+const safePrintFruits = (fruits = []) => fruits.forEach(fruit => console.log(fruit));
+printFruits(['apples', 'bananas', 'oranges']); // all good
+printFruits(); // TypeError: Cannot read property 'forEach' of undefined
+safePrintFruits(); // doesn't log anything but also doesn't throw an error because we use an empty array as a default value
+```
+*Output*
+```
+apples
+bananas
+oranges
+```
+> Default params are especially recommended when using array methods inside a function, like in the example above. Another useful usecase would be when accessing object properties inside a function, in this case you would need a default value of an empty object.
+
 
 ## Useful array functions
 
