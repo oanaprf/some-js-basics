@@ -4,6 +4,7 @@
  * [Truthy and Falsy values](#truthy-and-falsy-values)
  * [Short circuit and Ternary operators](#short-circuit-and-ternary-operators)
  * [Few ES6 useful features](#few-es6-useful-features)
+   * [Arrow functions](#arrow-functions)
    * [Template literals](#template-literals)
    * [Destructuring assignment](#destructuring-assignment)
      * [Object destructuring](#object-destructuring)
@@ -86,6 +87,69 @@ falsyValue is a falsy value!
 ```
 
 ## Few ES6 useful features
+
+
+### Arrow functions
+
+Before ES6, you could write a function in 2 ways(there are others, but these two are the most popular ones):
+
+**Function declaration**
+
+*Example*
+```javascript
+function sum(numbers) {
+  return numbers.reduce((result, current) => result + current , 0);
+}
+console.log(sum([1,2,3]));
+```
+*Output*
+```
+6
+```
+
+**Function expression**
+
+*Example*
+```javascript
+const sum = function(numbers) {
+  return numbers.reduce((result, current) => result + current , 0);
+}
+console.log(sum([1,2,3]));
+```
+*Output*
+```
+6
+```
+
+**Arrow functions** are always *functions expressions*. They are assigned to a variable, and it's safer to declare that variable as a constant.
+
+Notice that in both examples, you need to explicitly return the result from the functions. Well, for arrow functions, you don't need to do that. If the function is a *single statement*, you can drop both the curly braces and the return statement(although you can use them if you need).
+
+Another thing you need to know about arrow functions is that they don't have their own `this`. They use the immediate upper scope as the scope for `this`.
+
+Arrow functions are not hoisted(their declaration is not lifted at the top at runtime), so they need to be declared before being used(or, you can simply declare them with `const`, since you need to declare and initialize at the same time).
+
+*Example*
+```javascript
+const sum = (numbers) => numbers.reduce((result, current) => result + current , 0);
+console.log(sum([1,2,3]));
+```
+*Output*
+```
+6
+```
+
+>See, short and simple!
+
+So, key takeaways:
+* *no explicit return needed*
+* *no curly braces needed*
+* *they don't have their own `this`*
+* *if there is only one parameter, you can even drop the braces* 
+    ```javascript 
+    const sum = numbers => numbers.reduce((result, current) => result + current , 0);
+    ```
+
 
 ### Template literals
 
@@ -310,7 +374,7 @@ const squareRoots = numbers.map((current, index) =>
   console.log(`Calculating square root of item at index ${index}`) || Math.sqrt(current));
 console.log(`Square roots: ${squareRoots}`);
 ```
-  
+
 *Output* 
 ```
 Calculating square root of item at index 0
@@ -494,3 +558,4 @@ Checking if 2 is a perfect square
 Does the numbers array only contain perfect squares? Answer: No
 ```
 > Uh oh! Only two console.log got printed! I wonder why is that? Simple! `every` needs the callback function to return a truthy value for all the array items! So if it finds one that doesn't, it stops and returns false, skipping the next iterations.
+         
