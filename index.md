@@ -35,7 +35,7 @@ Actually, we'll go the other way around and play the elimination game since JS o
  * `undefined`
  * `null`
  * `NaN`
- * `0n` which is 0 as a BigInt(bla bla)
+ * `0n` which is 0 as a BigInt
 
 **So, all the rest of the values are truthy? Yep!**  
 *Even an empty Object?* Yep! Every object is truthy in JS.  
