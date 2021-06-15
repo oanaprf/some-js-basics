@@ -73,7 +73,7 @@ falsyValue || console.log('falsyValue is falsy:(');
 falsyValue is falsy:(
 ```
 
-**Ternary operator** is the short form of an if. It's really simple, look:  
+**Ternary operator** is the short form of an *if else*. It's really simple, look:  
 
 *Example*
 ```javascript
@@ -147,7 +147,7 @@ So, key takeaways:
 * *no explicit return needed*
 * *no curly braces needed*
 * *they don't have their own `this`*
-* *if there is only one parameter, you can even drop the braces* 
+* *if there is only one parameter, you can even drop the paranthesis* 
     ```javascript 
     const sum = numbers => numbers.reduce((result, current) => result + current , 0);
     ```
@@ -232,8 +232,8 @@ Array destructuring works in the same way as the object destructuring, except th
 *Example*
 ```javascript
 const fruits = [ 'bananas', 'apples', 'cherries', 'kiwis', 'peaches' ];
-const [ bananas, apples, , kiwis ] = fruits;
-console.log(`I gotta buy some ${bananas}, ${apples} and ${kiwis}`);
+const [ firstValue, secondValue, , fourthValue ] = fruits;
+console.log(`I gotta buy some ${firstValue}, ${secondValue} and ${fourthValue}`);
 ```
 *Output*
 ```
@@ -487,7 +487,7 @@ So, the `attributes` object will be:
       * [optional] array item index
       * [optional] initial array
     * [optional] thisArg - to be used as `this` inside the callback function
-  * **return value**: a single value, i.e. the first array item for which the callback returns a truthy value
+  * **return value**: a single value, i.e. the first array item for which the callback returns a truthy value, or `undefined` otherwise
   
 *Example*
 ```javascript
@@ -501,6 +501,7 @@ console.log(`Perfect square: ${perfectSquare}`);
 Perfect square: 1
 ```
 > Notice that the `numbers` array contains two perfect squares, but `find` will only return the first one, i.e. 1.
+> Keep in mind that if the `find` function does not actually find the desired result, it will return `undefined`. So, if you would use it to find an object in an array of objects, make sure you have a fallback value before processing the desired object.
 
 
 ### `some`
