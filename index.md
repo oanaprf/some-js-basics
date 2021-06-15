@@ -298,7 +298,7 @@ In this case, we used the *rest operator* without any destructuring, but, as I'v
 
 If **rest** operator joins certain values under a single one, guess what **spread** operator does! Yep, exactly the opposite: it *spreads* the values.
 
-The synthax is the same(three dots and a variable name), so it may be get a little confusing at first, but don't worry, you'll get the hang of it!
+The synthax is the same(three dots and a variable name), so it may be a little confusing at first, but don't worry, you'll get the hang of it!
 
 **Spread operator** is generally used for *concating arrays* and *merging object properties*. Let's see an example of each.
 
