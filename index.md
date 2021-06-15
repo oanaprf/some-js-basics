@@ -49,7 +49,8 @@ Actually, we'll go the other way around and play the elimination game since JS o
 
 Short circuit operators are logical AND `&&` and logical OR `||`. Aside from their obvious and well-known behavior(they check for all(&&), respective at least one(||) operands to be `true` - or truthy), they also have some "hidden" features:  
 
-`&&` will return the **first falsy** operand, and if it doesn't find it, then it returns the last operand => therefore, you can use it as a shorter if  
+`&&` will return the **first falsy** operand, and if it doesn't find it, then it returns the last operand => therefore, you can use it as a shorter if.
+
 *Example*
 ```javascript
 const truthyValue = 'truthy value';
@@ -60,7 +61,8 @@ truthyValue && console.log('truthyValue is a truthy value indeed!');
 truthyValue is a truthy value indeed!
 ```  
 
-`||` will return the **first truthy** operand, and, similar to `&&` if it doesn't find it, it will return the last operand => you can use this one as a cool trick while debugging, you'll spot it later in this guide  
+`||` will return the **first truthy** operand, and, similar to `&&` if it doesn't find it, it will return the last operand => you can use this one as a cool trick while debugging, you'll spot it later in this guide.
+
 *Example*
 ```javascript
 const falsyValue = '';
@@ -154,7 +156,7 @@ So, key takeaways:
 ### Template literals
 
 **Template literals** are a brand new(and prettier) way of creating strings which supports the following:
-  * embedding variables and expressions(this is what I mostrly use template literals for)
+  * embedding variables and expressions(this is what I mostly use template literals for)
   * multi-line strings
 
 So, instead of the old fashioned `+` operator you were using to concatenate strings with variables/expressions and the `\n` escape character you were using to add a new line, now you have a more elegant solution.
